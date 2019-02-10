@@ -1,0 +1,310 @@
+
+---
+title: "Data 606 Homework 1"
+author: "[Kleber Perez - `r format(Sys.Date(), '%B %d, %Y')`](https://www.linkedin.com/in/kleberperez/)" 
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    
+---
+<style>
+.maroonColor {
+  color:#9f0a0a;
+}
+.greyColor {
+  color:#808080;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#library(DT)
+#DT::datatable(smokinghabits, options = list(pageLength = 10))
+```
+
+# <span class="greyColor">Chapter 1 - Introduction to Data</span>
+
+```{r}
+smokinghabits <- read.csv("https://raw.githubusercontent.com/jbryer/DATA606Spring2019/master/data/os3_data/Ch%201%20Exercise%20Data/smoking.csv")
+```
+
+<br />
+
+
+## Exercise 1
+
+> <span class="greyColor">1.8 Smoking habits of UK residents. A survey was conducted to study the smoking habits of UK residents. Below is a data matrix displaying a portion of the data collected in this survey. Note that '£' stands for British Pounds Sterling, 'cig' stands for cigarettes, and 'N/A' refers to a missing component of the data.</span>
+
+> <span class="maroonColor">(a) What does each row of the data matrix represent?</span>
+
+```{r}
+head(smokinghabits)
+```
+
+> <span class="greyColor">In this dataset, each row represents a single observation for a single UK residen and it shows the detail and the amount of smokes consumed.</span>
+
+> <span class="maroonColor">(b) How many participants were included in the survey?</span>
+
+```{r}
+p <- nrow(smokinghabits)
+cat(paste("There were", p, "participants included in the survey."), "\n")
+```
+
+<br />
+
+> <span class="maroonColor">(c) Indicate whether each variable in the study is numerical or categorical. If numerical, identify as continuous or discrete. If categorical, indicate if the variable is ordinal.</span>
+
+```{r}
+str(smokinghabits)
+```
+
+> <span class="greyColor"> 1. gender is Categorical <br />
+  2. age is numerical and Continuous <br />
+  3. maritalStatus is Categorical <br />
+  4. highestQualification is Categorical <br />
+  5. nationality - Categorical <br />
+  6. ethnicity is Categorical <br />
+  7. grossIncome is Categorical and Ordinal <br />
+  8. region is Categorical <br />
+  9. smoke is Categorical <br />
+  10. amtWeekends is numerical and discrete <br />
+  11. amtWeekdays is numerical and discrete <br />
+  12. type is Categorical
+  </span>
+
+<br />
+
+
+## Exercise 2
+
+> <span class="greyColor">1.10 Cheaters, scope of inference. Exercise 1.5 introduces a study where researchers studying the relationship between honesty, age, and self-control conducted an experiment on 160 children between the ages of 5 and 15. The researchers asked each child to toss a fair coin in private and to record the outcome (white or black) on a paper sheet, and said they would only reward children who report white. Half the students were explicitly told not to cheat and the others were not given any explicit instructions. Di???erences were observed in the cheating rates in the instruction and no instruction groups, as well as some di???erences across children's characteristics within each group.</span>
+
+> <span class="maroonColor">(a) Identify the population of interest and the sample in this study.</span>
+
+> <span class="greyColor">The population of interest in this study is the children between the ages of 5 to 15.
+  And the sample used in this study is the 160 children between the ages of 5 to 15.</span>
+
+<br />
+
+> <span class="maroonColor">(b) Comment on whether or not the results of the study can be generalized to the population, and if the findings of the study can be used to establish causal relationships.</span>
+
+> <span class="greyColor">The results of this study cannot be generalized to the population, simply because the region where the study took place is unknown. Also, compared to the population, the sample size is relative small. Therefore, a more robust sample size is needed to generalize the results to whole population. <br />
+  Since this is an experiment, all findings from this study can be used to establish causal relationships.</span>
+
+<br />
+
+
+## Exercise 3
+
+> <span class="greyColor">1.28 Reading the paper. Below are excerpts from two articles published in the NY Times.</span>
+
+> <span class="maroonColor">(a) Based on this study, can we conclude that smoking causes dementia later in life? Explain your reasoning.</span>
+
+> <span class="greyColor">This is an observational study. There was no treatment and control group. We cannot derive causal relationship on observational study. Although the numbers show that the smoking causes dementia, we are not sure about the external factors(cofounding variable) which is involved. So we cannot conclude that smoking causes dementia. <br />
+  Sample popuation 23123: <br />
+  25% - Dementia (includes 1136 - Alzheimer, 416 - Vascular dementia) and 5781 persons had Dementia. </span>
+
+<br />
+
+> <span class="maroonColor">(b) Another article titled The School Bully Is Sleepy states the following: 62
+</span>
+
+> <span class="greyColor">This is an observational study. The statement is not a valid statement. Because the study shows that the children who had behavior issues are likely to show sleep disorders. But it is not other way around. We cannot state that the sleep disorders lead to bullying in school children. <br />
+So we can't make causal relationship on observational study.</span>
+
+<br />
+
+
+## Exercise 4
+
+> <span class="greyColor">1.36 Exercise and mental health. A researcher is interested in the e???ects of exercise on mental health and he proposes the following study: Use strati???ed random sampling to ensure representative proportions of 18-30, 31-40 and 41- 55 year olds from the population. Next, randomly assign half the subjects from each age group to exercise twice a week, and instruct the rest not to exercise. Conduct a mental health exam at the beginning and at the end of the study, and compare the results.</span>
+
+> <span class="maroonColor">(a) What type of study is this?</span>
+
+> <span class="greyColor">This is an experimental study.</span>
+
+<br />
+
+> <span class="maroonColor">(b) What are the treatment and control groups in this study?</span>
+
+> <span class="greyColor">Treatment group contains random half the subjects from all the ages (18-30, 31-40 and 41- 55 year). <br />
+  Control group contains random half the subjects from all the ages (18-30, 31-40 and 41- 55 year).</span>
+
+<br />
+
+> <span class="maroonColor">(c) Does this study make use of blocking? If so, what is the blocking variable?</span>
+
+> <span class="greyColor">Yes. This study makes use of blocking. The blocking variable is age.</span>
+
+<br />
+
+> <span class="maroonColor">(d) Does this study make use of blinding?</span>
+
+> <span class="greyColor">No. It does not explicitly mention that the study is using blinding.</span>
+
+<br />
+
+> <span class="maroonColor">(e) Comment on whether or not the results of the study can be used to establish a causal relationship between exercise and mental health, and indicate whether or not the conclusions can be generalized to the population at large.</span>
+
+> <span class="greyColor">This is an experimental study. It can use used to find out the causal relationship. It depends on the sample size. The study can be generalized to the population if the sample size is large enough.</span>
+
+<br />
+
+> <span class="maroonColor">(f) Suppose you are given the task of determining if this proposed study should get funding. Would you have any reservations about the study proposal?</span>
+
+> <span class="greyColor">I would recommend to fund the study. I would recommend a good number of sample size for this study.</span>
+
+<br />
+
+
+## Exercise 5
+
+> <span class="greyColor">1.48 Stats scores. Below are the final exam scores of twenty introductory statistics students. 
+
+> <span class="maroonColor">Create a box plot of the distribution of these scores. The five number summary provided below may be useful.</span>
+
+```{r}
+statscores <- c(57, 66, 69, 71, 72, 73, 74, 77, 78, 78, 79, 79, 81, 81, 82, 83, 83, 88, 89, 94)
+boxplot(statscores)
+```
+
+
+## Exercise 6
+
+> <span class="maroonColor">1.50 Mix-and-match. Describe the distribution in the histograms below and match them to the box plots.</span>
+
+> <span class="greyColor">(a) The match box plot number is 2. The distribution is unimodel which has one peak. And the histogram is symmetric.</span>
+
+> <span class="greyColor">(b) The match box plot number is 3. The distribution is multimodel which has many peak. And the histogram is symmetric.</span>
+
+> <span class="greyColor">(c) The match box plot number is 1. The distribution is unimodel which has one peak. And the histogram is right skewed.</span>
+
+<br />
+
+
+## Exercise 7
+
+> <span class="greyColor">1.56 Distributions and appropriate statistics, Part II . For each of the following, state whether you expect the distribution to be symmetric, right skewed, or left skewed. Also specify whether the mean or median would best represent a typical observation in the data, and whether the variability of observations would be best represented using the standard deviation or IQR. Explain your reasoning.</span>
+
+> <span class="maroonColor">(a) Housing prices in a country where 25% of the houses cost below $350,000, 50% of the houses cost below $450,000, 75% of the houses cost below $1,000,000 and there are a meaningful number of houses that cost more than $6,000,000.</span>
+
+> <span class="greyColor">
+  1. Right skewed <br />
+  2. Median - Because the study is right skewed <br />
+  3. Standard Deviation - Because we need to best represent the variablity </span>
+
+<br />
+
+> <span class="maroonColor">(b) Housing prices in a country where 25% of the houses cost below $300,000, 50% of the houses cost below $600,000, 75% of the houses cost below $900,000 and very few houses that cost more than $1,200,000.</span>
+
+> <span class="greyColor">
+  1. Symmentrical distribution <br />
+  2. Mean - Because the study is symmentrical <br />
+  3. IQR - Because all the data can be showed in a single chart with variability</span>
+
+<br />
+
+> <span class="maroonColor">(c) Number of alcoholic drinks consumed by college students in a given week. Assume that most of these students don't drink since they are under 21 years old, and only a few drink excessively.</span>
+
+> <span class="greyColor">
+  1. Symmentrical distribution <br />
+  2. Median - Because the study is multimodel <br />
+  3. Standard Deviation </span>
+
+<br />
+
+> <span class="maroonColor">(d) Annual salaries of the employees at a Fortune 500 company where only a few high level executives earn much higher salaries than the all other employees.</span>
+
+> <span class="greyColor">
+  1. Right skewed <br />
+  2. Median - Because the study is right skewed <br />
+  3. Standard Deviation - Because we need to best represent the variablity </span>
+
+<br />
+
+
+## Exercise 8
+
+> <span class="greyColor">1.70 Heart transplants. The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan. Each patient entering the program was designated an ocial heart transplant candidate, meaning that he was gravely ill and would most likely bene???t from a new heart. Some patients got a transplant and some did not. The variable transplant indicates which group the patients were in; patients in the treatment group got a transplant and those in the control group did not. Another variable called survived was used to indicate whether or not the patient was alive at the end of the study.</span>
+
+```{r}
+heartTrans <- read.csv("https://raw.githubusercontent.com/jbryer/DATA606Spring2019/master/data/os3_data/Ch%201%20Exercise%20Data/heart_transplant.csv")
+head(heartTrans)
+```
+
+<br />
+
+> <span class="maroonColor">(a) Based on the mosaic plot, is survival independent of whether or not the patient got a transplant? Explain your reasoning.</span>
+
+```{r}
+summary(heartTrans)
+mosaicplot(table(heartTrans$transplant,heartTrans$survived))
+```
+
+> <span class="greyColor">According to the mosaic plot, the survival of the patient is dependet on transplant.</span>
+
+<br />
+
+> <span class="maroonColor">(b) What do the box plots below suggest about the efficacy (effectiveness) of the heart transplant treatment.</span>
+
+> <span class="greyColor">From the box plots, the efficacy of heart transplant treatment is very bad. Most(30) of the patients were dead. There were some outlies in this study. So some of them were alive might be due to the chance or error in experiment.</span>
+
+<br />
+
+> <span class="maroonColor">(c) What proportion of patients in the treatment group and what proportion of patients in the control group died?</span>
+
+```{r}
+control_died <- (30 / 75);
+cat(paste(control_died), "\n")
+treatment_died <- (45 / 75);
+cat(paste(treatment_died), "\n")
+```
+
+<br />
+
+> <span class="maroonColor">(d) One approach for investigating whether or not the treatment is effiective is to use a randomization technique.</span> 
+
+<br />
+
+> <span class="greyColor">i. What are the claims being tested? <br />
+  &nbsp;&nbsp;&nbsp;Whether or not the trasplant is successful.</span>
+
+<br />
+
+> <span class="greyColor">ii. The paragraph below describes the set up for such approach, if we were to do it without using statistical software. Fill in the blanks with a number or phrase, whichever is appropriate. <br />
+  &nbsp;&nbsp;&nbsp;1. Random <br />
+  &nbsp;&nbsp;&nbsp;2. Random <br />
+  &nbsp;&nbsp;&nbsp;3. half <br />
+  &nbsp;&nbsp;&nbsp;4. half <br />
+  &nbsp;&nbsp;&nbsp;5. Mean or Zero <br />
+  &nbsp;&nbsp;&nbsp;6. Low </span>
+
+<br />
+
+> <span class="greyColor">iii. What do the simulation results shown below suggest about the effectiveness of the transplant program? <br />
+  &nbsp;&nbsp;&nbsp;According to the simulation results, it shows that the effectiveness of happening is 3 times.</span>
+
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+> *Please email to: * <a href="mailto:kleber.perez@live.com">kleber.perez@live.com</a> *for any suggestion.*
+
+<br />
+
+<footer class="border-top text-muted fixed-bottom">
+
+        ** Data 606 Homework 1 - MSDS 2019 Program.
+
+</footer>
+
+\textbf{Text ignored: END of other links}
+
+
+
+
